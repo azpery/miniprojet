@@ -1,0 +1,25 @@
+.img-indicator img {
+    width: 234px;
+    margin: 10px;
+}
+
+ul.img-indicators {
+    list-style: none;
+    float: left;
+    display: block;
+    max-height: 100%;
+}
+
+ul.img-indicators li {
+    cursor: pointer;
+}
+
+div#file-tree {
+    overflow-y: auto;
+    display: block;
+    max-height: 100%;
+}
+
+div#carousel {
+    max-height: 100%;
+}
