@@ -1,0 +1,63 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Image
+ *
+ * @ORM\Table(name="image", indexes={@ORM\Index(name="id_repository", columns={"id_repository"})})
+ * @ORM\Entity
+ */
+class Image
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="legend", type="text", length=65535, nullable=true)
+     */
+    private $legend;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="orientation", type="integer", nullable=false)
+     */
+    private $orientation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=false)
+     */
+    private $path;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Repository
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Repository")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_repository", referencedColumnName="id")
+     * })
+     */
+    private $idRepository;
+
+
+}
