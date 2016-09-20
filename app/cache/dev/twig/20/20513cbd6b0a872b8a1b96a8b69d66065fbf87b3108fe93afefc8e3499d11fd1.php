@@ -22,20 +22,20 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fa889792d50038564c63fe3a8443e961d72b629d29f26e7a0295a22b83e6cc6c = $this->env->getExtension("native_profiler");
-        $__internal_fa889792d50038564c63fe3a8443e961d72b629d29f26e7a0295a22b83e6cc6c->enter($__internal_fa889792d50038564c63fe3a8443e961d72b629d29f26e7a0295a22b83e6cc6c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
+        $__internal_239620830537923e5f59d81837ec7626333143b40d05d468d8ddcdd3a4ac6ccd = $this->env->getExtension("native_profiler");
+        $__internal_239620830537923e5f59d81837ec7626333143b40d05d468d8ddcdd3a4ac6ccd->enter($__internal_239620830537923e5f59d81837ec7626333143b40d05d468d8ddcdd3a4ac6ccd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_fa889792d50038564c63fe3a8443e961d72b629d29f26e7a0295a22b83e6cc6c->leave($__internal_fa889792d50038564c63fe3a8443e961d72b629d29f26e7a0295a22b83e6cc6c_prof);
+        $__internal_239620830537923e5f59d81837ec7626333143b40d05d468d8ddcdd3a4ac6ccd->leave($__internal_239620830537923e5f59d81837ec7626333143b40d05d468d8ddcdd3a4ac6ccd_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_9a882e11826bef0c0e6d318290eae56261ed5e0ad504cd016d5be4f67f43e98f = $this->env->getExtension("native_profiler");
-        $__internal_9a882e11826bef0c0e6d318290eae56261ed5e0ad504cd016d5be4f67f43e98f->enter($__internal_9a882e11826bef0c0e6d318290eae56261ed5e0ad504cd016d5be4f67f43e98f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_c8a2d7d86d85a107dffcddf4af3e214eadcdad213c65c736f4e44304b9dabcb2 = $this->env->getExtension("native_profiler");
+        $__internal_c8a2d7d86d85a107dffcddf4af3e214eadcdad213c65c736f4e44304b9dabcb2->enter($__internal_c8a2d7d86d85a107dffcddf4af3e214eadcdad213c65c736f4e44304b9dabcb2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "<div id=\"file-tree\" class=\"col-xs-3\">
@@ -94,9 +94,14 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
             // line 16
             echo "        <li data-target=\"#carousel\" class=\"img-indicator\" data-slide-to=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
-            echo "\"><img src=\"";
+            echo "\">
+          <img src=\"";
+            // line 17
             echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl((("images/original/" . $this->getAttribute($context["image"], "path", array())) . "")), "html", null, true);
-            echo "\"></li>
+            echo "\" data-rotate=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["image"], "orientation", array()), "html", null, true);
+            echo "\">
+        </li>
   ";
             ++$context['loop']['index0'];
             ++$context['loop']['index'];
@@ -110,13 +115,25 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 18
+        // line 20
         echo "</ul>
+</div>
+<div class=\"col-xs-9 row\">
+  <div class=\"col-xs-6\">
+    <button class=\"btn btn-default pull-left\" id=\"rotate-left\">
+      rotate left
+    </button>
+    <button class=\"btn btn-default pull-right\" id=\"rotate-right\">
+      rotate right
+    </button>
+  </div>
+  <div class=\"col-xs-6\">
+  </div>
 </div>
 <div id=\"carousel\" class=\"carousel slide col-xs-9\" data-ride=\"carousel\">
   <div class=\"carousel-inner\" role=\"listbox\">
     ";
-        // line 22
+        // line 36
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["images"]) ? $context["images"] : $this->getContext($context, "images")));
         $context['loop'] = array(
@@ -133,19 +150,21 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["image"]) {
-            // line 23
+            // line 37
             echo "    <div class=\"item ";
             if (($this->getAttribute($context["loop"], "index0", array()) == 0)) {
                 echo "active";
             }
             echo "\">
       <img src=\"";
-            // line 24
+            // line 38
             echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl((("images/original/" . $this->getAttribute($context["image"], "path", array())) . "")), "html", null, true);
-            echo "\" alt=\"...\">
+            echo "\" data-rotate=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["image"], "orientation", array()), "html", null, true);
+            echo "\" >
       <div class=\"carousel-caption\">
         ";
-            // line 26
+            // line 40
             echo twig_escape_filter($this->env, $this->getAttribute($context["image"], "title", array()), "html", null, true);
             echo "
       </div>
@@ -163,7 +182,7 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['image'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 30
+        // line 44
         echo "  </div>
 
   <a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">
@@ -177,23 +196,23 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
 </div>
 ";
         
-        $__internal_9a882e11826bef0c0e6d318290eae56261ed5e0ad504cd016d5be4f67f43e98f->leave($__internal_9a882e11826bef0c0e6d318290eae56261ed5e0ad504cd016d5be4f67f43e98f_prof);
+        $__internal_c8a2d7d86d85a107dffcddf4af3e214eadcdad213c65c736f4e44304b9dabcb2->leave($__internal_c8a2d7d86d85a107dffcddf4af3e214eadcdad213c65c736f4e44304b9dabcb2_prof);
 
     }
 
-    // line 42
+    // line 56
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_29f3dadacbb6dd9e87234cf1105f7162cea90df951e5115c99645a35e318435d = $this->env->getExtension("native_profiler");
-        $__internal_29f3dadacbb6dd9e87234cf1105f7162cea90df951e5115c99645a35e318435d->enter($__internal_29f3dadacbb6dd9e87234cf1105f7162cea90df951e5115c99645a35e318435d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_91388fde816cd5d92f5aeae2953f79cbe03f0d8aaf4891f03399cdb3e6ed522c = $this->env->getExtension("native_profiler");
+        $__internal_91388fde816cd5d92f5aeae2953f79cbe03f0d8aaf4891f03399cdb3e6ed522c->enter($__internal_91388fde816cd5d92f5aeae2953f79cbe03f0d8aaf4891f03399cdb3e6ed522c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 43
+        // line 57
         echo "<script>
 \$('.carousel').carousel()
 </script>
 ";
         
-        $__internal_29f3dadacbb6dd9e87234cf1105f7162cea90df951e5115c99645a35e318435d->leave($__internal_29f3dadacbb6dd9e87234cf1105f7162cea90df951e5115c99645a35e318435d_prof);
+        $__internal_91388fde816cd5d92f5aeae2953f79cbe03f0d8aaf4891f03399cdb3e6ed522c->leave($__internal_91388fde816cd5d92f5aeae2953f79cbe03f0d8aaf4891f03399cdb3e6ed522c_prof);
 
     }
 
@@ -209,7 +228,7 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
 
     public function getDebugInfo()
     {
-        return array (  191 => 43,  185 => 42,  167 => 30,  149 => 26,  144 => 24,  137 => 23,  120 => 22,  114 => 18,  95 => 16,  78 => 15,  74 => 13,  63 => 11,  59 => 10,  56 => 9,  50 => 7,  48 => 6,  44 => 5,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  210 => 57,  204 => 56,  186 => 44,  168 => 40,  161 => 38,  154 => 37,  137 => 36,  119 => 20,  100 => 17,  95 => 16,  78 => 15,  74 => 13,  63 => 11,  59 => 10,  56 => 9,  50 => 7,  48 => 6,  44 => 5,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -227,15 +246,29 @@ class __TwigTemplate_6769b1ee2a46481a81a17c77341106b776cb93cfe4de76d2446dbd31f72
 /*   </ul>*/
 /*   <ul class="img-indicators">*/
 /*   {% for image in images %}*/
-/*         <li data-target="#carousel" class="img-indicator" data-slide-to="{{loop.index0}}"><img src="{{ asset('images/original/'~image.path~'')}}"></li>*/
+/*         <li data-target="#carousel" class="img-indicator" data-slide-to="{{loop.index0}}">*/
+/*           <img src="{{ asset('images/original/'~image.path~'')}}" data-rotate="{{image.orientation}}">*/
+/*         </li>*/
 /*   {% endfor %}*/
 /* </ul>*/
+/* </div>*/
+/* <div class="col-xs-9 row">*/
+/*   <div class="col-xs-6">*/
+/*     <button class="btn btn-default pull-left" id="rotate-left">*/
+/*       rotate left*/
+/*     </button>*/
+/*     <button class="btn btn-default pull-right" id="rotate-right">*/
+/*       rotate right*/
+/*     </button>*/
+/*   </div>*/
+/*   <div class="col-xs-6">*/
+/*   </div>*/
 /* </div>*/
 /* <div id="carousel" class="carousel slide col-xs-9" data-ride="carousel">*/
 /*   <div class="carousel-inner" role="listbox">*/
 /*     {% for image in images %}*/
 /*     <div class="item {%if loop.index0 == 0%}active{%endif%}">*/
-/*       <img src="{{ asset('images/original/'~image.path~'')}}" alt="...">*/
+/*       <img src="{{ asset('images/original/'~image.path~'')}}" data-rotate="{{image.orientation}}" >*/
 /*       <div class="carousel-caption">*/
 /*         {{image.title}}*/
 /*       </div>*/
