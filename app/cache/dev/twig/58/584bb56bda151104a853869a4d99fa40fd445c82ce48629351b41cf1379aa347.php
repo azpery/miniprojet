@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/toolbar_js.html.twig */
+/* WebProfilerBundle:Profiler:toolbar_js.html.twig */
 class __TwigTemplate_1d8d857f1e2a77b342f3080c452390111089d5d75698245b13f18a269575e5fb extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,8 +15,8 @@ class __TwigTemplate_1d8d857f1e2a77b342f3080c452390111089d5d75698245b13f18a26957
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8db2da323699c1de599058a8ce527c7e9a6ed854d6538d702aef55225b2c8ccc = $this->env->getExtension("native_profiler");
-        $__internal_8db2da323699c1de599058a8ce527c7e9a6ed854d6538d702aef55225b2c8ccc->enter($__internal_8db2da323699c1de599058a8ce527c7e9a6ed854d6538d702aef55225b2c8ccc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/toolbar_js.html.twig"));
+        $__internal_c87fd59b04fee804434fc9970567134fb0b78201b97dcd2a2387aae81d37df35 = $this->env->getExtension("native_profiler");
+        $__internal_c87fd59b04fee804434fc9970567134fb0b78201b97dcd2a2387aae81d37df35->enter($__internal_c87fd59b04fee804434fc9970567134fb0b78201b97dcd2a2387aae81d37df35_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:toolbar_js.html.twig"));
 
         // line 1
         echo "<div id=\"sfwdt";
@@ -130,13 +130,13 @@ class __TwigTemplate_1d8d857f1e2a77b342f3080c452390111089d5d75698245b13f18a26957
 /*]]>*/</script>
 ";
         
-        $__internal_8db2da323699c1de599058a8ce527c7e9a6ed854d6538d702aef55225b2c8ccc->leave($__internal_8db2da323699c1de599058a8ce527c7e9a6ed854d6538d702aef55225b2c8ccc_prof);
+        $__internal_c87fd59b04fee804434fc9970567134fb0b78201b97dcd2a2387aae81d37df35->leave($__internal_c87fd59b04fee804434fc9970567134fb0b78201b97dcd2a2387aae81d37df35_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/toolbar_js.html.twig";
+        return "WebProfilerBundle:Profiler:toolbar_js.html.twig";
     }
 
     public function isTraitable()
