@@ -20,7 +20,7 @@ class DefaultController extends Controller
 
       $subFolders = $em->getRepository("AppBundle:Repository")->findByIdParent($page);
 
-        return $this->render('AppBundle:default:index.html.twig', array(
+        return $this->render('AppBundle:default:admin.html.twig', array(
             'images' => $images,
             'currentFolder' => $currentFolder,
             'subFolders' => $subFolders

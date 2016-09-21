@@ -1,3 +1,5 @@
+var picturesUpdated = [];
+
 $(document).ready(function(){
 
   initRotation();
@@ -6,11 +8,21 @@ $(document).ready(function(){
 
     rotateCurrentImage(-90);
 
+    applyChanges();
+
   })
 
   $("#rotate-right").click(function(){
 
     rotateCurrentImage(90);
+
+    applyChanges();
+
+  })
+
+  $("#save-changes").click(function(){
+
+    saveChanges();
 
   })
 
@@ -46,3 +58,70 @@ function initRotation(){
   });
 
 }
+
+function applyChanges(){
+
+  $image = $("#carousel .item.active img");
+
+  orientation = $image.attr('data-rotate');
+
+  title = $image.attr('data-title');
+
+  idRepository = $image.attr('data-idRepository');
+
+  id = parseInt($image.attr('data-id'));
+
+  legend = $image.attr('data-legend');
+
+  if(picturesUpdated[id]){
+
+    image = picturesUpdated[id];
+
+  }else{
+
+    image = new Image(id);
+
+    picturesUpdated[id] = image;
+
+  }
+
+  image.orientation = parseInt(orientation);
+
+  image.legend = legend;
+
+  image.title = title;
+
+  image.idRepository = parseInt(idRepository);
+
+}
+
+function saveChanges(){
+
+  var data = [];
+
+
+
+  picturesUpdated.forEach(function(element){
+
+    data.push(JSON.stringify(element));
+
+  });
+
+  dataToSend = {"images" : data};
+
+  url = "/update/"
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: dataToSend,
+    success: success
+  });
+
+}
+
+function success(){
+  alert("gg");
+}
+
+
