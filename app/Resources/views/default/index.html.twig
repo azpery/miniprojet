@@ -13,15 +13,29 @@
   </ul>
   <ul class="img-indicators">
   {% for image in images %}
-        <li data-target="#carousel" class="img-indicator" data-slide-to="{{loop.index0}}"><img src="{{ asset('images/original/'~image.path~'')}}"></li>
+        <li data-target="#carousel" class="img-indicator" data-slide-to="{{loop.index0}}">
+          <img src="{{ asset('images/original/'~image.path~'')}}" data-rotate="{{image.orientation}}">
+        </li>
   {% endfor %}
 </ul>
+</div>
+<div class="col-xs-9 row">
+  <div class="col-xs-6">
+    <button class="btn btn-default pull-left" id="rotate-left">
+      rotate left
+    </button>
+    <button class="btn btn-default pull-right" id="rotate-right">
+      rotate right
+    </button>
+  </div>
+  <div class="col-xs-6">
+  </div>
 </div>
 <div id="carousel" class="carousel slide col-xs-9" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
     {% for image in images %}
     <div class="item {%if loop.index0 == 0%}active{%endif%}">
-      <img src="{{ asset('images/original/'~image.path~'')}}" alt="...">
+      <img src="{{ asset('images/original/'~image.path~'')}}" data-rotate="{{image.orientation}}" >
       <div class="carousel-caption">
         {{image.title}}
       </div>
