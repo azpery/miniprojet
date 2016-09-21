@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
 <div id="file-tree" class="col-xs-3">
   <h4>{{currentFolder.name}}</h4>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
@@ -20,7 +21,10 @@
 </ul>
 </div>
 <div class="col-xs-9 row">
-<button class="btn btn-default pull-left" id="save-changes">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal">
+    Importer des images
+  </button>
+  <button class="btn btn-default pull-left" id="save-changes">
       enregistrer
     </button>
   <div class="col-xs-6">
@@ -46,18 +50,38 @@
     {% endfor %}
   </div>
 
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carouselc" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endblock %}
-{% block javascripts %}
-<script>
-$('.carousel').carousel()
-</script>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Import d'image</h4>
+      </div>
+      <form method="post" action="{{ path('import') }}" enctype="multipart/form-data">
+        <div class="modal-body">
+          <input type="hidden" name="MAX_FILE_SIZE" value="1073741824" />
+          <label for="icone">Image (JPG, PNG ou GIF | max. 1 Go) :</label><br />
+          <input type="file" name="icone" id="icone" /><br />
+          <label for="titre">Titre du fichier (max. 50 caractères) :</label><br />
+          <input type="text" name="titre" value="Titre du fichier" id="titre" /><br />
+          <label for="description">Description de votre fichier (max. 255 caractères) :</label><br />
+          <textarea name="description" id="description"></textarea><br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-success" name="submit" value="Envoyer" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

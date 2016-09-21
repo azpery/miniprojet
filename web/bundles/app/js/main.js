@@ -2,6 +2,8 @@ var picturesUpdated = [];
 
 $(document).ready(function(){
 
+  $('.carousel').carousel();
+
   initRotation();
 
   $("#rotate-left").click(function(){
