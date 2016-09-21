@@ -4,4 +4,8 @@ var image = function(){
   this.legend;
   this.orientation;
   this.idRepository;
+
+  var toJson = function(){
+    return JSON.stringify(this);
+  }
 }

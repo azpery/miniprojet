@@ -1,7 +1,19 @@
 $(document).ready(function(){
 
   initRotation();
-  
+
+  $("#rotate-left").click(function(){
+
+    $image = $("#carousel .item.active");
+
+    currentOrientation = $image.data('rotate');
+
+    newOrientation = parseInt(currentOrientation) - 90;
+
+    $image.data('rotate' , newOrientation);
+
+  })
+
 });
 
 function initRotation(){
