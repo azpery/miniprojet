@@ -19,9 +19,12 @@ div#file-tree {
     display: block;
     max-height: 100%;
 }
+.item img{
+  max-height: 500px;
+}
 
-div#carousel {
-    max-height: 100%;
+.carousel{
+  height:500px;
 }
 
 .carousel-control.left {
@@ -35,4 +38,44 @@ div#carousel {
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
+}
+
+.item img {
+    margin: 0 auto;
+}
+
+
+
+a.thumbnail {
+}
+
+a.thumbnail img {
+}
+
+.center-block {
+    text-align: center;
+}
+
+.nav button {
+    margin-top: 15px;
+}
+
+.carousel-control span {
+    color: black;
+}
+
+
+
+span.folder {
+    width: 100px;
+    color: gray;
+    font-size: 74px;
+}
+
+.subFolder {
+    float: left;
+    position: relative;
+    width: 115px;
+    text-align: center;
+    height: 115px;
 }
