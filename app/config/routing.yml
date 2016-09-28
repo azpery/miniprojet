@@ -27,3 +27,6 @@ deleteFolder:
 deleteImage:
     path:      /deleteImage
     defaults:  { _controller: AppBundle:Admin:deleteImage}
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
