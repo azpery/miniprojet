@@ -7,25 +7,25 @@ file_explorer:
     requirements:
         page: '\d+'
 import:
-    path:      /import
+    path:      /manager/import
     defaults:  { _controller: AppBundle:Admin:import}
 
 update:
-    path:      /update
+    path:      /manager/update
     defaults:  { _controller: AppBundle:Default:update}
 admin:
     path:      /admin/{page}
     defaults:  { _controller: AppBundle:Admin:index, page:1}
 
 addFolder:
-    path:      /addFolder
+    path:      /manager/addFolder
     defaults:  { _controller: AppBundle:Admin:addFolder}
 
 deleteFolder:
-    path:      /deleteFolder
+    path:      /manager/deleteFolder
     defaults:  { _controller: AppBundle:Admin:deleteFolder}
 deleteImage:
-    path:      /deleteImage
+    path:      /manager/deleteImage
     defaults:  { _controller: AppBundle:Admin:deleteImage}
 
 fos_user:

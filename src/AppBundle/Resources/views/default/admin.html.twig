@@ -18,22 +18,25 @@
                         <a href="{{ path('file_explorer') }}">Interface utilisateur</a>
                     </li>
                     <li>
-                    % if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    {{ 'logout'|trans({}, 'FOSUserBundle') }}
                     </a>
+                    {%endif%}
                     </li>
-
+                    <li>
                       <button  class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal">
-                    <li>
                         Importer des images
-                    </li>
                       </button>
-                      <button class="btn btn-primary btn-xs" id="save-changes" disabled>
-                    <li>
-                          enregistrer
                     </li>
-                        </button>
+                    <li>
+                      <button class="btn btn-primary btn-xs" id="save-changes" disabled>
+                          enregistrer
+                      </button>
+                    </li>
+                    <li>
+                      <a href="{{ asset('docs')}}">Documentation utilisateur</a>
+                    </li>
                 </ul>
             </div>
         </div>

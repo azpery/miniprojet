@@ -52,7 +52,7 @@ class AdminController extends Controller
 
       $directory = $request->get('currentFolder');
       //Si l'utilisateur a bien tapé une description, un titre et upload une image
-      if(!is_null($description) && !is_null($title) && !is_null($file) ){
+      if(!is_null($description) && !is_null($title) && !is_null($file) && $file->getError() == 0){
 
         //1. strrchr renvoie l'extension avec le point (« . »).
         //2. substr(chaine,1) ignore le premier caractère de chaine.
@@ -64,6 +64,7 @@ class AdminController extends Controller
           echo "Extension correcte<br/>";
 
           $path = $file->getRealPath();
+
           //Chemin vers les trois dossiers de destination
           $originalFolder = $this->get('kernel')->getRootDir()."/../web/images/original/".$date."/";
 
@@ -94,6 +95,7 @@ class AdminController extends Controller
           $id = md5(uniqid(rand(), true));
           //Objet Resizer qui permet de redimensionner l'image
           $imageResizer = new ImageResizer($path);
+
 
           $nomImage = $date."/{$id_membre}-{$id}.{$extension_upload}";
 

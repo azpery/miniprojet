@@ -46,6 +46,7 @@ class ImageResizer
      */
     public function __construct($filename)
     {
+
         $image_info = @getimagesize($filename);
         if (!$image_info) {
             throw new \Exception('Could not read file');

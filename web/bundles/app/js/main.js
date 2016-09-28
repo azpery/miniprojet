@@ -91,7 +91,7 @@ function applyChanges(){
 
   if(picturesUpdated["id-"+id]){
 
-    image = picturesUpdated[id];
+    image = picturesUpdated["id-"+id];
 
   }else{
 
