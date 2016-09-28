@@ -28,6 +28,18 @@ $(document).ready(function(){
 
   })
 
+  $(".legend").change(function(){
+
+    applyChanges();
+
+  })
+
+  $(".title").change(function(){
+
+    applyChanges();
+
+  })
+
 });
 
 function rotateCurrentImage(degree){
@@ -69,13 +81,13 @@ function applyChanges(){
 
   orientation = $image.attr('data-rotate');
 
-  title = $image.attr('data-title');
+  title = $(".active .title").val();
 
   idRepository = $image.attr('data-idRepository');
 
   id = parseInt($image.attr('data-id'));
 
-  legend = $image.attr('data-legend');
+  legend = $(".active .legend").val();
 
   if(picturesUpdated[id]){
 
@@ -103,17 +115,17 @@ function saveChanges(){
 
   var data = [];
 
-
-
   picturesUpdated.forEach(function(element){
 
     data.push(JSON.stringify(element));
 
   });
 
-  dataToSend = {"images" : data};
+  dataToSend = {"images" : picturesUpdated};
 
-  url = "/update/"
+
+  console.log(picturesUpdated);
+  url = "/"
 
   $.ajax({
     type: "POST",
@@ -125,5 +137,7 @@ function saveChanges(){
 }
 
 function success(){
+  picturesUpdated = [];
+  $("#save-changes").attr("disabled",true);
   alert("gg");
 }
