@@ -24,7 +24,7 @@ div#file-tree {
 }
 
 .carousel{
-  height:500px;
+  height: 650px;
 }
 
 .carousel-control.left {
@@ -78,4 +78,38 @@ span.folder {
     width: 115px;
     text-align: center;
     height: 115px;
+}
+
+
+.carousel-legend {
+    max-height: 100px;
+}
+
+textarea.title {
+    border: none;
+    width: 100%;
+    COLOR: black;
+    background: none;
+    text-align: center;
+}
+
+textarea.legend {
+    border: none;
+    background: none;
+}
+
+h4.carousel-caption {
+    position: relative;
+    bottom: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+img.logo {
+    max-height: 100%;
+    float: left;
+}
+
+a.navbar-brand {
+    padding: 3px;
 }

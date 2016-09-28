@@ -193,4 +193,26 @@ class AdminController extends Controller
       return $this->redirect( $this->generateUrl('admin', array('page' => $parent)) );
 
     }
+
+    public function deleteImageAction(Request $request){
+
+      $idImage = $request->get('idImage');
+
+      $em = $this->getDoctrine();
+
+      $image = $em->getRepository("AppBundle:Image")->findOneById($idImage);
+
+      $kernel = $this->get('kernel');
+
+      $image->deleteImagesFromPath($kernel);
+
+      $parent = $image->getIdRepository()->getId();
+
+      $em->getManager()->remove($image);
+
+      $em->getManager()->flush();
+
+      return $this->redirect( $this->generateUrl('admin', array('page' => $parent)) );
+
+    }
 }

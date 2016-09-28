@@ -28,6 +28,18 @@ $(document).ready(function(){
 
   })
 
+  $(".legend").change(function(){
+
+    applyChanges();
+
+  })
+
+  $(".title").change(function(){
+
+    applyChanges();
+
+  })
+
 });
 
 function rotateCurrentImage(degree){
@@ -69,13 +81,13 @@ function applyChanges(){
 
   orientation = $image.attr('data-rotate');
 
-  title = $image.attr('data-title');
+  title = $(".active .title").val();
 
   idRepository = $image.attr('data-idRepository');
 
   id = $image.attr('data-id');
 
-  legend = $image.attr('data-legend');
+  legend = $(".active .legend").val();
 
   if(picturesUpdated["id-"+id]){
 
@@ -88,7 +100,7 @@ function applyChanges(){
     picturesUpdated["id-"+id] = image;
 
   }
-  
+
   image.id = parseInt(id);
 
   image.orientation = parseInt(orientation);
@@ -115,12 +127,14 @@ function saveChanges(){
     }
     i++;
   });
-  
+
   data += "]";
-  
+
   console.log(data);
 
-  dataToSend = {"images" : data};
+  dataToSend = {"images" : picturesUpdated};
+
+
 
   url = "http://localhost:8888/miniprojet/web/app_dev.php/update"
 
@@ -134,5 +148,7 @@ function saveChanges(){
 }
 
 function success(){
+  picturesUpdated = [];
+  $("#save-changes").attr("disabled",true);
   alert("gg");
 }

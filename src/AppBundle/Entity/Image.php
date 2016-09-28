@@ -77,7 +77,7 @@ class Image
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -100,7 +100,7 @@ class Image
     /**
      * Get legend
      *
-     * @return string 
+     * @return string
      */
     public function getLegend()
     {
@@ -123,7 +123,7 @@ class Image
     /**
      * Get orientation
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrientation()
     {
@@ -146,7 +146,7 @@ class Image
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -156,7 +156,7 @@ class Image
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -179,10 +179,24 @@ class Image
     /**
      * Get idRepository
      *
-     * @return \AppBundle\Entity\Repository 
+     * @return \AppBundle\Entity\Repository
      */
     public function getIdRepository()
     {
         return $this->idRepository;
+    }
+
+    public function deleteImagesFromPath($kernel){
+
+      $path = $this->getPath();
+
+      $originalFolder = $kernel->getRootDir()."/../web/images/original/".$path;
+
+      $largeFolder = $kernel->getRootDir()."/../web/images/large/".$path;
+
+      $smallFolder = $kernel->getRootDir()."/../web/images/small/".$path;
+
+      return unlink($originalFolder) && unlink($largeFolder) && unlink($smallFolder);
+
     }
 }
