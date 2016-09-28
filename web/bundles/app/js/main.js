@@ -1,10 +1,14 @@
 var picturesUpdated = {};
 
+
 $(document).ready(function(){
 
   $('.carousel').carousel();
 
   initRotation();
+  
+  
+// Fonction permettant la rotation des photos à gauche de façon dynamique
 
   $("#rotate-left").click(function(){
 
@@ -13,6 +17,8 @@ $(document).ready(function(){
     applyChanges();
 
   })
+  
+// Fonction permettant la rotation des photos à gauche de façon dynamique
 
   $("#rotate-right").click(function(){
 
@@ -22,18 +28,21 @@ $(document).ready(function(){
 
   })
 
+// Fonction permettant la prise en compte des modifications
   $("#save-changes").click(function(){
 
     saveChanges();
 
   })
 
+// Fonction permettant le changement de la légende des photos
   $(".legend").change(function(){
 
     applyChanges();
 
   })
 
+// Fonction permettant le changement du titre des photos
   $(".title").change(function(){
 
     applyChanges();
@@ -42,6 +51,7 @@ $(document).ready(function(){
 
 });
 
+// Applique la rotation à l'image après que l'utilisateur ait cliqué sur le bouton rotation gauche ou droite
 function rotateCurrentImage(degree){
 
   $image = $("#carousel .item.active img");
@@ -72,6 +82,8 @@ function initRotation(){
   });
 
 }
+
+// Fonction qui applique les modifications effectuées sur les photos 
 
 function applyChanges(){
 
@@ -112,6 +124,10 @@ function applyChanges(){
   image.idRepository = parseInt(idRepository);
 
 }
+
+/*Fonction permettant de récupérer les modifications faites sur les images (orientation, légende, titre..) 
+et de les envoyer via un jSON pour une mise à jour dans la base de données
+*/
 
 function saveChanges(){
 
