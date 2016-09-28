@@ -15,25 +15,35 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ path('file_explorer') }}">Interface utilisateur</a>
+                        <a href="{{ path('file_explorer') }}">{% trans %}Interface utilisateur{% endtrans %}</a>
                     </li>
                     <li>
-                    % if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
                     <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    {% endif %}
                     </a>
                     </li>
 
                       <button  class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal">
                     <li>
-                        Importer des images
+                        {% trans %}Importer des images{% endtrans %}
                     </li>
                       </button>
                       <button class="btn btn-primary btn-xs" id="save-changes" disabled>
                     <li>
-                          enregistrer
+                          {% trans %}Enregistrer{% endtrans %}
                     </li>
                         </button>
+                                       <ul class="nav navbar-nav">
+                <li {% block EN %}{% endblock %}>
+                  <a href="{{ path(app.request.get('_route'),app.request.get('_route_params')|merge({'_locale':'en'})) }}"><img width="30" height="20" src="{{asset('translation_icons/en.jpg')}}" alt="flag" ></a>
+                </li>  
+            
+                <li {% block FR %}{% endblock %}>
+                  <a href="{{ path(app.request.get('_route'),app.request.get('_route_params')|merge({'_locale':'fr'})) }}"><img width="30" height="20" src="{{asset('translation_icons/fr.jpg')}}" alt="flag" ></a>
+                </li> 
+              </ul>
                 </ul>
             </div>
         </div>
@@ -46,10 +56,10 @@
       <div id="carousel" class="carousel slide col-xs-12" data-ride="carousel" data-interval="false">
         <div class="row center-block">
               <button class="btn btn-default" id="rotate-left">
-                Rotation gauche
+                {% trans %}Rotation gauche{% endtrans %}
               </button>
               <button class="btn btn-default" id="rotate-right">
-                Rotation droite
+                 {% trans %}Rotation droite{% endtrans %}
               </button>
         </div>
         </br>
@@ -61,7 +71,7 @@
               <textarea class="title">{{image.title}} </textarea>
             </h4>
             <div class="carousel-legend">
-              <h4>Description</h4>
+              <h4>{% trans %}Description{% endtrans %}</h4>
               <textarea class="legend">{{image.legend}}</textarea>
             </div>
           </div>
@@ -72,23 +82,23 @@
     </div>
     <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="sr-only">{% trans %}Previous{% endtrans %}</span>
     </a>
     <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+      <span class="sr-only">{% trans %}Next{% endtrans %}</span>
     </a>
   </div>
 </header>
 
 <div class="container">
 <div id="file-tree row" >
-  <h3>Dossier actuel : {{currentFolder.name}}</h3>
+  <h3>{% trans %}Dossier actuel{% endtrans %} : {{currentFolder.name}}</h3>
 
 <div class="subFolders col-xs-12">
-    <button id="addFolder" class="pull-right btn btn-primary btn" data-toggle="modal" data-target="#modalAddFolder">Ajouter un dossier ici.</button>
+    <button id="addFolder" class="pull-right btn btn-primary btn" data-toggle="modal" data-target="#modalAddFolder">{% trans %}Ajouter un dossier ici{% endtrans %}.</button>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
-      <a href="{{ path('admin', {'page': currentFolder.idParent.id}) }}"><button class="btn btn-default">Retourner au répertoire parent</button></a>
+      <a href="{{ path('admin', {'page': currentFolder.idParent.id}) }}"><button class="btn btn-default">{% trans %}Retourner au répertoire parent{% endtrans %}</button></a>
   {%endif%}
     {% for subFolder in subFolders %}
           <div  class="subFolder" >
