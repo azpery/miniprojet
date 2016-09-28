@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#about">Administrateur</a>
+                        <a href="#">Administrateur</a>
                     </li>
                 </ul>
             </div>
@@ -34,6 +34,7 @@
             <div class="carousel-caption">
               {{image.title}}
             </div>
+          <small>{{image.legend}}</small>
           </div>
           {% endfor %}
         </div>
@@ -62,9 +63,9 @@
   {% for subFolder in subFolders %}
         <div  class="subFolder" >
             <a href="{{ path('file_explorer', {'page': subFolder.id}) }}"  >
-              <span class="glyphicon glyphicon-folder-close folder" aria-hidden="true" ></span>
+              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-folder-open" aria-hidden="true" ></span>   {{subFolder.name}}</button>
             </a>
-            {{subFolder.name}}
+            
         </div>
   {% endfor %}
   </div>
