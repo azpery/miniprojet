@@ -1,4 +1,4 @@
-var picturesUpdated = [];
+var picturesUpdated = {};
 
 $(document).ready(function(){
 
@@ -73,11 +73,11 @@ function applyChanges(){
 
   idRepository = $image.attr('data-idRepository');
 
-  id = parseInt($image.attr('data-id'));
+  id = $image.attr('data-id');
 
   legend = $image.attr('data-legend');
 
-  if(picturesUpdated[id]){
+  if(picturesUpdated["id-"+id]){
 
     image = picturesUpdated[id];
 
@@ -85,9 +85,11 @@ function applyChanges(){
 
     image = new Image(id);
 
-    picturesUpdated[id] = image;
+    picturesUpdated["id-"+id] = image;
 
   }
+  
+  image.id = parseInt(id);
 
   image.orientation = parseInt(orientation);
 
@@ -101,19 +103,26 @@ function applyChanges(){
 
 function saveChanges(){
 
-  var data = [];
+  var data = "[";
 
+	var i = 0;
+	var length = Object.keys(picturesUpdated).length - 1;
+  $.each(picturesUpdated, function(index, element){
 
-
-  picturesUpdated.forEach(function(element){
-
-    data.push(JSON.stringify(element));
-
+    data += JSON.stringify(element);
+    if(i < length){
+    	data += ",";
+    }
+    i++;
   });
+  
+  data += "]";
+  
+  console.log(data);
 
   dataToSend = {"images" : data};
 
-  url = "/update/"
+  url = "http://localhost:8888/miniprojet/web/app_dev.php/update"
 
   $.ajax({
     type: "POST",
