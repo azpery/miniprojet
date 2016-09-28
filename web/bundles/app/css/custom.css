@@ -85,7 +85,7 @@ span.folder {
     max-height: 100px;
 }
 
-textarea.title {
+.title {
     border: none;
     width: 100%;
     COLOR: black;
@@ -93,7 +93,7 @@ textarea.title {
     text-align: center;
 }
 
-textarea.legend {
+.legend {
     border: none;
     background: none;
 }

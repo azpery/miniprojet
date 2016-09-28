@@ -29,20 +29,22 @@
       <div id="carousel" class="carousel slide col-xs-12" data-ride="carousel" data-interval="false">
         <div class="carousel-inner" role="listbox">
           {% for image in images %}
+          <div class="item {%if loop.index0 == 0%}active{%endif%}">
           <div class="row center-block">
                 <a class="btn btn-default" href="{{ asset('images/original/'~image.path~'')}}" download>
                   Télécharger cette image
                 </a>
           </div>
-          <div class="item {%if loop.index0 == 0%}active{%endif%}">
+          </br>
             <img src="{{ asset('images/original/'~image.path~'')}}" data-rotate="{{image.orientation}}" >
-            <h4 class="carousel-caption">
+            <h4 class="title">
               {{image.title}}
             </h4>
-            <div class="carousel-legend">
+           <div class="carousel-legend">
               <h4>Description</h4>
               {{image.legend}}
             </div>
+
           </div>
           {% endfor %}
         </div>
@@ -63,17 +65,17 @@
 
 
 <div id="file-tree" >
-  <h3>{{currentFolder.name}}</h3>
+  <h3>Dossier actuel : {{currentFolder.name}}</h3>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
-    <a href="{{ path('file_explorer', {'page': currentFolder.idParent.id}) }}"><button>Retourner au répertoire racine</button></a>
+    <a href="{{ path('file_explorer', {'page': currentFolder.idParent.id}) }}"><button type="button" class="btn btn-default">Retourner au répertoire racine</button></a>
   {%endif%}
   <div class="subFolders col-xs-12">
   {% for subFolder in subFolders %}
         <div  class="subFolder" >
             <a href="{{ path('file_explorer', {'page': subFolder.id}) }}"  >
-              <span class="glyphicon glyphicon-folder-close folder" aria-hidden="true" ></span>
+              <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-folder-open" aria-hidden="true" ></span>   {{subFolder.name}}</button>
             </a>
-            {{subFolder.name}}
+
         </div>
   {% endfor %}
   </div>
