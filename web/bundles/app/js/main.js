@@ -136,7 +136,7 @@ function saveChanges(){
 
 
 
-  url = "/miniprojet/web/app_dev.php/update"
+  url = $("#updatePath").val();
 
   $.ajax({
     type: "POST",
@@ -150,5 +150,4 @@ function saveChanges(){
 function success(){
   picturesUpdated = [];
   $("#save-changes").attr("disabled",true);
-  alert("gg");
 }
