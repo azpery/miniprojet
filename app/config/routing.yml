@@ -9,3 +9,6 @@ file_explorer:
 import:
     path:      /import
     defaults:  { _controller: AppBundle:Default:import}
+update:
+    path:      /update
+    defaults:  { _controller: AppBundle:Default:update}

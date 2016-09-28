@@ -27,6 +27,42 @@ class DefaultController extends Controller
             'subFolders' => $subFolders
         ));
     }
+    
+    public function updateAction(Request $request)
+    
+    {
+  
+    $json = $request->get("images");
+    
+    $data = json_decode($json, true);
+     $parsed_jsons = json_decode($json);
+     foreach($parsed_jsons as $parsed_json){
+	 $id = $parsed_json->id;
+	 $title = $parsed_json->title;
+	 $legend = $parsed_json->legend;
+	 $orientation = $parsed_json->orientation;
+	 $idRepository = $parsed_json->idRepository;
+	 
+	 echo "id = ${id}, tittle = ${title}, legend = ${legend}, ${orientation}, ${idRepository} %n";
+	 
+	 $em = $this->getDoctrine();
+	 $rootDirectory = $em->getRepository("AppBundle:Repository")->findOneById($idRepository);
+	 $image = $em->getRepository("AppBundle:Image")->findOneById($id);
+	 $image->setTitle($title);
+	 $image->setLegend($legend);
+	 $image->setOrientation($orientation);
+	 $image->setIdRepository($rootDirectory);
+	 $em->getManager()->persist($image);
+	 $em->getManager()->flush();
+	 
+	 
+	 }
+	 
+	 return new Response("ok");
+	 
+	 echo "ok";
+	 
+    }
 
 
     public function importAction(Request $request)
