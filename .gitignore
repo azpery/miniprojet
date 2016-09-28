@@ -1,1 +1,7 @@
 app
+
+app/config/parameters.yml
+
+app/logs/dev.log
+
+app/config/parameters.yml
