@@ -57,7 +57,7 @@
 <div id="file-tree" >
   <h3>{{currentFolder.name}}</h3>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
-    <a href="{{ path('file_explorer', {'page': currentFolder.idParent.id}) }}"><button>Retourner au répertoire racine</button></a>
+    <a href="{{ path('file_explorer', {'page': currentFolder.idParent.id}) }}"><button type="button" class="btn btn-default">Retourner au répertoire racine</button></a>
   {%endif%}
 <div class="subFolders col-xs-12">
   {% for subFolder in subFolders %}
