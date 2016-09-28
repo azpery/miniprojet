@@ -132,11 +132,11 @@ function saveChanges(){
 
   console.log(data);
 
-  dataToSend = {"images" : picturesUpdated};
+  dataToSend = {"images" : data};
 
 
 
-  url = "http://localhost:8888/miniprojet/web/app_dev.php/update"
+  url = "/miniprojet/web/app_dev.php/update"
 
   $.ajax({
     type: "POST",
