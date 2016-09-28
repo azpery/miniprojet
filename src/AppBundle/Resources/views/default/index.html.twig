@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -14,7 +12,6 @@
                 </button>
                 <a class="navbar-brand" href="#">Start Bootstrap</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
@@ -22,16 +19,14 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
-    
+
 <br/><br/><br/><br/>
 <header class="header-image">
   <div class="headline">
     <div class="container">
-      <div id="carousel" class="carousel slide col-xs-9" data-ride="carousel">
+      <div id="carousel" class="carousel slide col-xs-12" data-ride="carousel" data-interval="false">
         <div class="carousel-inner" role="listbox">
           {% for image in images %}
           <div class="item {%if loop.index0 == 0%}active{%endif%}">
@@ -56,23 +51,28 @@
 </header>
 
 <div class="container">
-  
+
 
 <div id="file-tree" >
   <h3>{{currentFolder.name}}</h3>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
     <a href="{{ path('file_explorer', {'page': currentFolder.idParent.id}) }}"><button>Retourner au répertoire racine</button></a>
   {%endif%}
-<div class="subFolders">
-    {% for subFolder in subFolders %}
-          <div  class="subFolder" ><a href="{{ path('file_explorer', {'page': subFolder.id}) }}"><button>{{subFolder.name}}</button></a></div>
-    {% endfor %}
+<div class="subFolders col-xs-12">
+  {% for subFolder in subFolders %}
+        <div  class="subFolder" >
+            <a href="{{ path('file_explorer', {'page': subFolder.id}) }}"  >
+              <span class="glyphicon glyphicon-folder-close folder" aria-hidden="true" ></span>
+            </a>
+            {{subFolder.name}}
+        </div>
+  {% endfor %}
   </div>
   <div class="row img-indicators">
     {% for image in images %}
 
-        <div class="col-xs-6 col-md-3">
-          <a href="#" class="thumbnail">   
+        <div class="col-xs-6 col-md-2">
+          <a href="#" class="thumbnail">
             <img src="{{ asset('images/original/'~image.path~'')}}" data-target="#carousel" class="img-indicator" data-slide-to="{{loop.index0}}" data-rotate="{{image.orientation}}">
           </a>
         </div>

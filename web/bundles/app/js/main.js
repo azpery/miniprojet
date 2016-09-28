@@ -63,6 +63,8 @@ function initRotation(){
 
 function applyChanges(){
 
+  $("#save-changes").attr("disabled",false);
+
   $image = $("#carousel .item.active img");
 
   orientation = $image.attr('data-rotate');
@@ -134,5 +136,3 @@ function saveChanges(){
 function success(){
   alert("gg");
 }
-
-
