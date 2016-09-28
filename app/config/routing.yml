@@ -21,3 +21,6 @@ addFolder:
 deleteFolder:
     path:      /deleteFolder
     defaults:  { _controller: AppBundle:Admin:deleteFolder}
+deleteImage:
+    path:      /deleteImage
+    defaults:  { _controller: AppBundle:Admin:deleteImage}
