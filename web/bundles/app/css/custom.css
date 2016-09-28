@@ -20,11 +20,11 @@ div#file-tree {
     max-height: 100%;
 }
 .item img{
-  max-height: 500px;
+  max-height: 200px;
 }
 
 .carousel{
-  height: 650px;
+  height: 360px;
 }
 
 .carousel-control.left {
@@ -96,6 +96,7 @@ span.folder {
 .legend {
     border: none;
     background: none;
+    width: 100%;
 }
 
 h4.carousel-caption {

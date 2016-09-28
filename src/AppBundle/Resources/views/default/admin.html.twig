@@ -78,7 +78,7 @@
 <div id="file-tree row" >
   <h3>Dossier actuel : {{currentFolder.name}}</h3>
 
-<div class="subFolders col-xs-12">
+<div class="subFolders col-xs-6">
     <button id="addFolder" class="pull-right btn btn-primary btn" data-toggle="modal" data-target="#modalAddFolder">Ajouter un dossier ici.</button>
   {%if currentFolder.idParent is defined and currentFolder.idParent is not null%}
       <a href="{{ path('admin', {'page': currentFolder.idParent.id}) }}"><button class="btn btn-default">Retourner au répertoire parent</button></a>
@@ -95,10 +95,10 @@
           </div>
     {% endfor %}
   </div>
-  <div class="row img-indicators">
+  <div class="row img-indicators col-xs-6">
     {% for image in images %}
 
-        <div class="col-xs-6 col-md-2">
+        <div class="col-xs-6 col-md-4">
           <a href="#" class="thumbnail">
             <form  action="{{ path('deleteImage') }}" method="post">
               <input type="hidden" name="idImage" value="{{image.id}}"/>
